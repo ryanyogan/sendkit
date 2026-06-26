@@ -3,12 +3,16 @@
   "private": true,
   "type": "module",
   "workspaces": [
+    "apps/*",
     "packages/*"
   ],
   "scripts": {
-    "dev:cli": "bun run packages/cli/src/index.ts"
+    "dev:cli": "bun run packages/cli/src/index.ts",
+    "dev:stdio-mcp": "bun run packages/stdio-mcp/src/index.ts",
+    "dev:http-mcp": "bun run apps/http-mcp/src/index.ts"
   },
   "devDependencies": {
-    "@types/node": "^26.0.0"
+    "@types/node": "^26.0.0",
+    "typescript": "^6.0.3"
   }
 }
