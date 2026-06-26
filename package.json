@@ -12,6 +12,9 @@
     "lint": "oxlint . --deny-warnings",
     "lint:fix": "oxlint . --fix",
     "typecheck": "tsc --noEmit",
+    "build:core": "bun run --filter @yogidev/sendkit-core build",
+    "build:cli": "bun run --filter @yogidev/sendkit build",
+    "build:stdio-mcp": "bun run --filter @yogidev/sendkit-mcp build",
     "dev:cli": "bun run packages/cli/src/index.ts",
     "dev:stdio-mcp": "bun run packages/stdio-mcp/src/index.ts",
     "dev:http-mcp": "bun run apps/http-mcp/src/index.ts"

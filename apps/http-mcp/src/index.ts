@@ -1,6 +1,6 @@
 import { Context, Hono } from "hono";
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
-import { sendTelegramMessage, telegramMessageInputSchema } from "sendkit-core";
+import { sendTelegramMessage, telegramMessageInputSchema } from "@yogidev/sendkit-core";
 import { WebStandardStreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/webStandardStreamableHttp.js";
 import { generateClerkProtectedResourceMetadata } from "@clerk/mcp-tools/server";
 import { createClerkClient } from "@clerk/backend";
@@ -56,10 +56,7 @@ function createServer(botToken: string) {
 }
 
 function protectedResourceMetadataUrl(c: Context, botToken: string) {
-  return new URL(
-    `/.well-known/oauth-protected-resource/${botToken}/mcp`,
-    c.req.url,
-  ).toString();
+  return new URL(`/.well-known/oauth-protected-resource/${botToken}/mcp`, c.req.url).toString();
 }
 
 function unauthorizedMcpResponse(c: Context, botToken: string) {
@@ -77,10 +74,7 @@ app.get("/.well-known/oauth-protected-resource/:botToken/mcp", async (c) => {
   return c.json(
     generateClerkProtectedResourceMetadata({
       publishableKey: clerkPublishableKey,
-      resourceUrl: new URL(
-        `/${c.req.param("botToken")}/mcp`,
-        c.req.url,
-      ).toString(),
+      resourceUrl: new URL(`/${c.req.param("botToken")}/mcp`, c.req.url).toString(),
     }),
   );
 });

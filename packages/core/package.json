@@ -1,8 +1,11 @@
 {
-  "name": "sendkit-core",
+  "name": "@yogidev/sendkit-core",
   "version": "0.0.0",
   "private": true,
   "type": "module",
+  "scripts": {
+    "build": "tsdown"
+  },
   "exports": {
     ".": {
       "types": "./src/index.ts",
