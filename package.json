@@ -17,7 +17,8 @@
     "build:stdio-mcp": "bun run --filter @yogidev/sendkit-mcp build",
     "dev:cli": "bun run packages/cli/src/index.ts",
     "dev:stdio-mcp": "bun run packages/stdio-mcp/src/index.ts",
-    "dev:http-mcp": "bun run apps/http-mcp/src/index.ts"
+    "dev:http-mcp": "bun run apps/http-mcp/src/index.ts",
+    "release:pack:core": "bun run --filter @yogidev/sendkit-core pack:dry"
   },
   "devDependencies": {
     "@types/node": "^26.0.1",
