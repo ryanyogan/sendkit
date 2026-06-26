@@ -56,10 +56,7 @@ function createServer(botToken: string) {
 }
 
 function protectedResourceMetadataUrl(c: Context, botToken: string) {
-  return new URL(
-    `/.well-known/oauth-protected-resource/${botToken}/mcp`,
-    c.req.url,
-  ).toString();
+  return new URL(`/.well-known/oauth-protected-resource/${botToken}/mcp`, c.req.url).toString();
 }
 
 function unauthorizedMcpResponse(c: Context, botToken: string) {
@@ -77,10 +74,7 @@ app.get("/.well-known/oauth-protected-resource/:botToken/mcp", async (c) => {
   return c.json(
     generateClerkProtectedResourceMetadata({
       publishableKey: clerkPublishableKey,
-      resourceUrl: new URL(
-        `/${c.req.param("botToken")}/mcp`,
-        c.req.url,
-      ).toString(),
+      resourceUrl: new URL(`/${c.req.param("botToken")}/mcp`, c.req.url).toString(),
     }),
   );
 });
@@ -116,7 +110,7 @@ app.post("/:botToken/mcp", async (c) => {
 
   try {
     return await transport.handleRequest(c.req.raw);
-  } catch (error) {
+  } catch {
     await server.close();
   }
 });
